@@ -1,0 +1,12 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    padding:0em 4em;
+}
+.icon{
+    height:30px;
+    align-self: center;
+}
+.small-img{
+    height:50px;
+}
