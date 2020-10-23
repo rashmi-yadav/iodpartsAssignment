@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shopping Cart</title>
   <link rel="stylesheet" href="style.css">
+  <!-- icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
   <!-- header -->
@@ -15,10 +18,10 @@
   <!-- Shopping Cart -->
   <div class="container">
     <div class="product-header">
-      <h5 class="product-title">Product</h5>
-      <h5 class="price">Price</h5>
-      <h5 class="quantity">Quantity</h5>
-      <h5 class="total">Total</h5>
+      <h3 class="product-title">Product</h3>
+      <h3 class="price">Price</h3>
+      <h3 class="quantity">Quantity</h3>
+      <h3 class="total">Total</h3>
     </div>
     <div class="product">
       <h5 class="product-title">
@@ -28,30 +31,85 @@
       <h5 class="price">
         <span class="rs">&#8377;</span>1500
       </h5>
-      <h5 class="quantity">1</h5>
+      <h5 class="quantity">
+        <i class="remove small material-icons ">chevron_left</i>
+        <span class="qty">1</span>
+        <i class="add small material-icons ">chevron_right</i>
+      </h5>
       <h5 class="total">
-        <span class="rs">&#8377;</span>1500
+        <span class="rs">&#8377;</span><span class="ttl">1500</span>
       </h5>
     </div>
     <div class="product">
       <h5 class="product-title">
-        <img src="images/arduino.png">
+        <img src="images/arduino.jpg">
         Arduino Uno R3
       </h5>
       <h5 class="price">
         <span class="rs">&#8377;</span>600
       </h5>
-      <h5 class="quantity">1</h5>
+      <h5 class="quantity">
+        <i class="remove small material-icons ">chevron_left</i>
+        1
+        <i class="add small material-icons ">chevron_right</i>
+      </h5>
       <h5 class="total">
-        <span class="rs">&#8377;</span>600
+        <span class="rs">&#8377;</span><span class="ttl">1500</span>
+        
       </h5>
     </div>
-    <div class="finalAmt">
+    <div class="product">
       <h3> Total </h3>
-      <h3> <span >&#8377;</span>2100 </h3>
+      <h3> <span >&#8377;</span> <span id="ttlAmt">2100 </span></h3>
     </div>
   </div>
 
+ 
+<div class="proceed">
+  <button onclick="show()">Proceed</button>
+</div>
+
+<div id="shipping-address">
+  <h2>Shipping address 
+    <i class="small material-icons ">add</i>
+  </h2>
+  <div class="addresses">
+    <div class="address">
+      <h4>Address 1</h4>
+      <address>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      </address>
+      <button class="deliver" id="del1" onclick="selected(1)">Deliver to this address</button> 
+      <div class="icons">
+        <i class="small material-icons ">delete</i>
+        <i class="small material-icons ">edit</i>
+      </div>
+    </div>
+    <div class="address">
+      <h4>Address 2</h4>
+      <address>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      </address>
+      <button class="deliver" id="del2" onclick="selected(2)">Deliver to this address</button> 
+      <div class="icons">
+        <i class="small material-icons ">delete</i>
+        <i class="small material-icons ">edit</i>
+      </div>
+    </div>
+    <div class="address">
+      <h4>Address 3</h4>
+      <address>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+      </address>
+      <button class="deliver" id="del3" onclick="selected(3)">Deliver to this address</button> 
+      <div class="icons">
+        <i class="small material-icons ">delete</i>
+        <i class="small material-icons ">edit</i>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
