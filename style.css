@@ -1,12 +1,15 @@
+/* header  */
+body{
+    margin:0;
+    padding:0;
+}
 .header{
-    display:flex;
-    justify-content: space-between;
-    padding:0em 4em;
+    text-align: center;
+    padding:2px;
+    top:0;
+    position: sticky;
 }
-.icon{
-    height:30px;
-    align-self: center;
+.shadow{
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
-.small-img{
-    height:50px;
-}
+
