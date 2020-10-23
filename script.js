@@ -9,3 +9,5 @@ $(window).scroll(function(e){
         header.removeClass('shadow');
     }
 });
+
+//  Shopping Cart 
