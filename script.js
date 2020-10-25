@@ -73,11 +73,11 @@ function decrement(product,index){
 }
 
 // Shipping Address
-// $('#shipping-address').hide(); 
+$('#shipping-address').hide(); 
 function show(){
     $('#shipping-address').show(); 
 }
-
+// Select which shipping address and deslect the remaining
 function selected(id){
     $('#del'+id).text("Selected");
     $('#del'+id).addClass('selected');
@@ -89,3 +89,9 @@ function selected(id){
         }
     }
 }
+/* add shipping address modal */
+$('#addNewShippingAddress').hide(); 
+function addShipping(){
+    $('#addNewShippingAddress').show(); 
+}
+alert("working!")

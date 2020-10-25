@@ -69,9 +69,11 @@
   <button onclick="show()">Proceed</button>
 </div>
 
+<!-- Shipping Address -->
+
 <div id="shipping-address">
   <h2>Shipping address 
-    <i class="small material-icons ">add</i>
+   <i onclick="addShipping()"  class="small material-icons">add</i>
   </h2>
   <div class="addresses">
     <div class="address">
@@ -108,6 +110,15 @@
       </div>
     </div>
 
+  </div>
+  <!-- add shipping address model -->
+  <div id="addNewShippingAddress">
+    Add Shipping Address:
+    <form>
+      <input type="text" placeholder="Enter Name">
+      <textarea placeholder="Address" cols="5" rows="2">
+      <input type="submit" value="Add Address">
+    </form>
   </div>
 </div>
 
