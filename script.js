@@ -73,7 +73,7 @@ function decrement(product,index){
 }
 
 // Shipping Address
-$('#shipping-address').hide(); 
+// $('#shipping-address').hide(); 
 function show(){
     $('#shipping-address').show(); 
 }
@@ -89,9 +89,136 @@ function selected(id){
         }
     }
 }
-/* add shipping address modal */
+// /* add shipping address modal */
 $('#addNewShippingAddress').hide(); 
 function addShipping(){
     $('#addNewShippingAddress').show(); 
 }
-alert("working!")
+let deliveryCount = 3;
+let billingCount = 0;
+function addAddress(id){
+    let name = document.getElementById(id+"Name").value;
+    let address = document.getElementById(id+"Address").value;
+    console.log("address====",address);
+    // shippingName_ billingName_
+    let nameHTML = "";
+    let addressHTML = "";
+    let deliverHTML = "";
+    let iconsHTML = "";
+    if(id==="shipping"){
+        deliveryCount += 1;
+        nameHTML = `<h4 id='${id}Name${deliveryCount}'>${name}</h4>`;
+        addressHTML = `<address id='${id}Address${deliveryCount}'>${address}</address>`;
+        deliverHTML = `<button class="deliver" id="del${deliveryCount}" onclick="selected(${deliveryCount})">
+                            Deliver to this address
+                        </button> `; 
+        iconsHTML = `
+                    <div class="icons">
+                    <i class="small material-icons" id="${id}Del${deliveryCount}" onclick="onDelete(id)">delete</i>
+                    <i class="small material-icons" id="${id}Edit${deliveryCount}">edit</i>
+                    </div>`;  
+    }else{
+        billingCount += 1;
+        nameHTML = `<h4 id='${id}Name${billingCount}'>${name}</h4>`;
+        addressHTML = `<address  id='${id}Address${billingCount}'>${address}</address>`;
+        deliverHTML = `<button class="deliver" id="bill${billingCount}" onclick="selectedBill(${billingCount})">
+                            Select
+                        </button> `;  
+                        //  
+        iconsHTML = `
+                    <div class="icons">
+                    <i class="small material-icons" id="${id}Del${billingCount}" onclick="onDelete(id)">delete</i>
+                    <i class="small material-icons" id="${id}Edit${billingCount}">edit</i>
+                    </div>`;  
+    }
+    let newAddressHTML; 
+    if(id==="shipping"){
+        newAddressHTML = `<div class="address" id="${id}Add${deliveryCount}">`+nameHTML+addressHTML+deliverHTML+iconsHTML+`</div>`;
+        $('.addresses').append(newAddressHTML);
+        $('#addNewShippingAddress').hide(); 
+        clearForm("shipping");
+    }else{
+        $('.bill-head').show();
+        newAddressHTML = `<div class="address"  id="${id}Add${billingCount}">`+nameHTML+addressHTML+deliverHTML+iconsHTML+`</div>`;
+        $('.billingAddresses').append(newAddressHTML);
+        $('#addNewBillingAddress').hide(); 
+        clearForm("billing");
+    }
+}   
+
+function clearForm(name){
+    document.getElementById(name+"Name").value = "";
+    document.getElementById(name+"Address").value = "";
+}
+
+function closeWindow(id){
+    var flag = id.search("Billing");
+    // alert(flag);    
+    if(flag>0){
+        // Billing
+    $('#'+id).hide(); 
+    $('#billingAddressCheck').prop('checked',true);
+    clearForm("billing");
+    }
+    else{
+        // Shipping
+        $('#'+id).hide(); 
+        clearForm("shipping");
+    }
+}
+
+function onDelete(id){
+    console.log(id);
+    var no = id.slice(-1);
+    var flag = id.search("billing");
+    console.log(flag,id)
+    if(flag>=0){
+        $("#billingAdd"+no).hide();
+    }else{
+        $("#shippingAdd"+no).hide();
+        console.log("#shippingAdd"+no);
+    }
+}
+
+// Billing Address
+$('#addNewBillingAddress').hide(); 
+let checkFlag = true;
+$('.bill-head').hide();
+function billingAdress(){
+    let flag = $('#billingAddressCheck').prop('checked');
+    if(flag == false){
+        if(checkFlag){
+            $('#addNewBillingAddress').show(); 
+            checkFlag = false;
+        }else{
+            console.log("flag",flag,"checkFlag",checkFlag);
+            $('.bill-head').show();
+                $('.billingAddresses .address').show();
+        }
+    }else{
+        // alert(flag);
+        console.log("flag",flag,"checkFlag",checkFlag);
+        if(checkFlag){
+            closeWindow("addNewBillingAddress");
+            $('#billingAddressCheck').prop('checked',true);
+            clearForm("billing");
+        }else{
+                $('.bill-head').hide();
+                $('.billingAddresses .address').hide();
+                
+        }
+    }
+}
+
+function selectedBill(id){
+    $('#bill'+id).text("Selected");
+    $('#bill'+id).addClass('selected');
+    // var del = document.querySelectorAll('.deliver');
+    // for(var i=0;i<del.length;i++){
+    //     if((i+1)!=id){
+    //         $('#del'+(i+1)).removeClass('selected');
+    //         $('#del'+(i+1)).text("Deliver to this address");
+    //     }
+    // }
+}
+// alert("working!")

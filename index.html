@@ -76,51 +76,76 @@
    <i onclick="addShipping()"  class="small material-icons">add</i>
   </h2>
   <div class="addresses">
-    <div class="address">
-      <h4>Address 1</h4>
-      <address>
+    <div class="address" id="shippingAdd1">
+      <h4 id="shippingName1">Address 1</h4>
+      <address id="shippingAddress1">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       </address>
       <button class="deliver" id="del1" onclick="selected(1)">Deliver to this address</button> 
       <div class="icons">
-        <i class="small material-icons ">delete</i>
-        <i class="small material-icons ">edit</i>
+        <i class="small material-icons" id="shippingDel1" onclick="onDelete(id)">delete</i>
+        <i class="small material-icons" id="shippingEdit1">edit</i>
       </div>
     </div>
-    <div class="address">
-      <h4>Address 2</h4>
-      <address>
+    <div class="address" id="shippingAdd2">
+      <h4 id="shippingName2">Address 2</h4>
+      <address id="shippingAddress2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       </address>
       <button class="deliver" id="del2" onclick="selected(2)">Deliver to this address</button> 
       <div class="icons">
-        <i class="small material-icons ">delete</i>
-        <i class="small material-icons ">edit</i>
+        <i class="small material-icons" id="shippingDel2" onclick="onDelete(id)">delete</i>
+        <i class="small material-icons" id="shippingEdit2">edit</i>
       </div>
     </div>
-    <div class="address">
-      <h4>Address 3</h4>
-      <address>
+    <div class="address" id="shippingAdd3">
+      <h4 id="shippingName3">Address 3</h4>
+      <address id="shippingAddress3">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
       </address>
       <button class="deliver" id="del3" onclick="selected(3)">Deliver to this address</button> 
       <div class="icons">
-        <i class="small material-icons ">delete</i>
-        <i class="small material-icons ">edit</i>
+        <i class="small material-icons" id="shippingDel3" onclick="onDelete(id)">delete</i>
+        <i class="small material-icons" id="shippingEdit3">edit</i>
       </div>
     </div>
 
   </div>
   <!-- add shipping address model -->
   <div id="addNewShippingAddress">
-    Add Shipping Address:
-    <form>
-      <input type="text" placeholder="Enter Name">
-      <textarea placeholder="Address" cols="5" rows="2">
-      <input type="submit" value="Add Address">
+    <form class="form">
+      <i class="small material-icons close" onclick="closeWindow('addNewShippingAddress')" >close</i>
+    <p>Add Shipping Address:</p>
+      <input type="text" placeholder="Enter Name" id="shippingName" class="name">
+      <textarea placeholder="Address" cols="10" rows="2" id="shippingAddress" class="name" ></textarea>
+      <input value="Add Address" onclick="addAddress('shipping')" class="submit">
     </form>
   </div>
+  <!-- Billing Address -->
+  <input type="checkbox" checked onchange="billingAdress()" name="billingAddress" id="billingAddressCheck"> Billing Address Same as Shipping Address
+  <!-- Add New Billing Address -->
+  <div id="addNewBillingAddress">
+    <form class="form">
+      <i class="small material-icons close" onclick="closeWindow('addNewBillingAddress')" >close</i>     
+    <p>Add Billing Address:</p> 
+      <input type="text" placeholder="Enter Name" id="billingName" class="name">
+      <textarea placeholder="Address" cols="10" rows="2" id="billingAddress" class="name" ></textarea>
+      <input value="Add Address" onclick="addAddress('billing')" class="submit">
+    </form>
+  </div>
+  <h2 class="bill-head">Billing address 
+    <i onclick="billingAdress()" class="small material-icons">add</i>
+  </h2> 
+  <div class="billingAddresses">
+    <!-- <h2>Billing address 
+      <i onclick="billingAddress()" class="small material-icons">add</i>
+    </h2> -->
+  </div>
 </div>
+
+
+
+<!-- Checkout -->
 
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

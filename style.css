@@ -13,6 +13,7 @@ body{
     padding:2px;
     top:0;
     position: sticky;
+    z-index: 999999;
 }
 .shadow{
     box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
@@ -90,19 +91,20 @@ body{
 }
 
 /* Shipping Address */
-#shipping-address h2{
+#shipping-address h2,.bill-head{
     display:flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.addresses{
+.addresses,.billingAddresses{
     display:flex;
     flex-wrap: wrap;
 }
 .address{
     width:200px;
     margin:0em 1em;
+    
 }
 .deliver{
     border:1px solid cyan;
@@ -125,3 +127,48 @@ body{
     border:1px solid white;
 }
 /* add shipping address  */
+.form p{
+    padding:1em;
+    align-self: center;
+}
+.form{
+    /* border:1px solid #000; */
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    padding:1em;
+    margin:2em auto;
+    /* justify-content: center; */
+    align-items: flex-start;
+    /* box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75); */
+    box-shadow:         9px -4px 5px 0px rgba(50, 50, 50, 0.75);
+}
+.name{
+    padding:10px;
+    border-radius:5px;
+    border:none;
+    border-bottom: 1px solid;
+}
+.submit{
+    width:30%;
+    padding:5px;
+    border-radius:25px;
+    border:1px solid cyan;
+    background-color: cyan;
+    text-align: center;
+    cursor: pointer;
+}
+.name{
+    width:56%;
+}
+.name,.submit{
+    margin:1em;
+}
+.close{
+    align-self: flex-end;
+}
+
+/* Billing Address */
+#billingAddress{
+    margin:2em 1em;
+}
