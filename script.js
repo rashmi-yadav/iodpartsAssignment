@@ -46,7 +46,9 @@ var ttl = document.querySelectorAll('.ttl');
 
 
 function increment(product,index){
-    console.log(index)
+    console.log(index);
+    let qty = parseInt(document.getElementById("qty"+index).innerHTML);
+    document.getElementById("qty"+index).innerHTML = qty + 1;
     product.qty += 1;
     price = parseInt(product.price);
     total = price * product.qty;
@@ -58,6 +60,8 @@ function increment(product,index){
 }
 function decrement(product,index){
     if(product.qty > 0){
+        let qty = parseInt(document.getElementById("qty"+index).innerHTML);
+        document.getElementById("qty"+index).innerHTML = qty - 1;
         product.qty -= 1;
         price = parseInt(product.price);
         total = price * product.qty;
@@ -73,7 +77,7 @@ function decrement(product,index){
 }
 
 // Shipping Address
-// $('#shipping-address').hide(); 
+$('#shipping-address').hide(); 
 function show(){
     $('#shipping-address').show(); 
 }
@@ -115,7 +119,7 @@ function addAddress(id){
         iconsHTML = `
                     <div class="icons">
                     <i class="small material-icons" id="${id}Del${deliveryCount}" onclick="onDelete(id)">delete</i>
-                    <i class="small material-icons" id="${id}Edit${deliveryCount}">edit</i>
+                    <i class="small material-icons" id="${id}Edit${deliveryCount}" onclick="onEdit(id)">edit</i>
                     </div>`;  
     }else{
         billingCount += 1;
@@ -128,7 +132,7 @@ function addAddress(id){
         iconsHTML = `
                     <div class="icons">
                     <i class="small material-icons" id="${id}Del${billingCount}" onclick="onDelete(id)">delete</i>
-                    <i class="small material-icons" id="${id}Edit${billingCount}">edit</i>
+                    <i class="small material-icons" id="${id}Edit${billingCount}" onclick="onEdit(id)">edit</i>
                     </div>`;  
     }
     let newAddressHTML; 
@@ -139,7 +143,7 @@ function addAddress(id){
         clearForm("shipping");
     }else{
         $('.bill-head').show();
-        newAddressHTML = `<div class="address"  id="${id}Add${billingCount}">`+nameHTML+addressHTML+deliverHTML+iconsHTML+`</div>`;
+        newAddressHTML = `<div class="address"  id="${id}Add${billingCount}">`+nameHTML+addressHTML+deliverHTML+`</div>`;
         $('.billingAddresses').append(newAddressHTML);
         $('#addNewBillingAddress').hide(); 
         clearForm("billing");
@@ -180,6 +184,38 @@ function onDelete(id){
     }
 }
 
+function onEdit(id){
+    console.log(id);
+    var no = id.slice(-1);
+    var flag = id.search("billing");
+    console.log(flag,id)
+    if(flag>=0){
+        
+    }else{
+        // $('editShippingAddress') = " ";
+        let name = document.getElementById("shippingName"+no).innerHTML;
+        let address = document.getElementById("shippingAddress"+no).innerHTML;
+        let html = "<div class='edit'>";
+        html += `<input type='text' value='${name}' id='editName'>`;
+        html += `<textarea rows='2' cols='10' id='editAddress'>${address}</textarea>`;
+        html += `<div class='buttons'><button onclick="onSave('shipping',${no})">Save</button> <button onclick='onCancel()'>Cancel</button></div>`;
+        html+="</div>"
+        $('#editShippingAddress').append(html);
+    }
+}
+function onCancel(){
+    document.getElementById('editShippingAddress').innerHTML = "";
+}
+function onSave(type,id){
+    if(type=="shipping"){
+        let name = document.getElementById("editName").value;
+        let address = document.getElementById("editAddress").value;
+        alert(address);
+        document.getElementById("shippingName"+id).innerHTML = name;
+        document.getElementById("shippingAddress"+id).innerHTML = address;
+        onCancel();
+    }
+}
 // Billing Address
 $('#addNewBillingAddress').hide(); 
 let checkFlag = true;
@@ -220,5 +256,12 @@ function selectedBill(id){
     //         $('#del'+(i+1)).text("Deliver to this address");
     //     }
     // }
+}
+
+// Checkout
+$('#checkout').hide(); 
+function checkout(){
+$('#checkout').show(); 
+
 }
 // alert("working!")

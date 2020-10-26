@@ -33,7 +33,7 @@
       </h5>
       <h5 class="quantity">
         <i class="remove small material-icons ">chevron_left</i>
-        <span class="qty">1</span>
+        <span id="qty0">1</span>
         <i class="add small material-icons ">chevron_right</i>
       </h5>
       <h5 class="total">
@@ -49,9 +49,9 @@
         <span class="rs">&#8377;</span>600
       </h5>
       <h5 class="quantity">
-        <i class="remove small material-icons ">chevron_left</i>
-        1
-        <i class="add small material-icons ">chevron_right</i>
+        <i class="remove small material-icons">chevron_left</i>
+        <span id="qty1">1</span>
+        <i class="add small material-icons">chevron_right</i>
       </h5>
       <h5 class="total">
         <span class="rs">&#8377;</span><span class="ttl">1500</span>
@@ -84,7 +84,7 @@
       <button class="deliver" id="del1" onclick="selected(1)">Deliver to this address</button> 
       <div class="icons">
         <i class="small material-icons" id="shippingDel1" onclick="onDelete(id)">delete</i>
-        <i class="small material-icons" id="shippingEdit1">edit</i>
+        <i class="small material-icons" id="shippingEdit1" onclick="onEdit(id)">edit</i>
       </div>
     </div>
     <div class="address" id="shippingAdd2">
@@ -95,7 +95,7 @@
       <button class="deliver" id="del2" onclick="selected(2)">Deliver to this address</button> 
       <div class="icons">
         <i class="small material-icons" id="shippingDel2" onclick="onDelete(id)">delete</i>
-        <i class="small material-icons" id="shippingEdit2">edit</i>
+        <i class="small material-icons" id="shippingEdit2" onclick="onEdit(id)">edit</i>
       </div>
     </div>
     <div class="address" id="shippingAdd3">
@@ -106,7 +106,7 @@
       <button class="deliver" id="del3" onclick="selected(3)">Deliver to this address</button> 
       <div class="icons">
         <i class="small material-icons" id="shippingDel3" onclick="onDelete(id)">delete</i>
-        <i class="small material-icons" id="shippingEdit3">edit</i>
+        <i class="small material-icons" id="shippingEdit3" onclick="onEdit(id)">edit</i>
       </div>
     </div>
 
@@ -121,8 +121,11 @@
       <input value="Add Address" onclick="addAddress('shipping')" class="submit">
     </form>
   </div>
+  <div id="editShippingAddress">
+
+  </div>
   <!-- Billing Address -->
-  <input type="checkbox" checked onchange="billingAdress()" name="billingAddress" id="billingAddressCheck"> Billing Address Same as Shipping Address
+  <input type="checkbox" checked onchange="billingAdress()" name="billingAddress" id="billingAddressCheck" style="margin: 30px 0px;"> Billing Address Same as Shipping Address
   <!-- Add New Billing Address -->
   <div id="addNewBillingAddress">
     <form class="form">
@@ -141,11 +144,26 @@
       <i onclick="billingAddress()" class="small material-icons">add</i>
     </h2> -->
   </div>
+  <div class="proceed">
+    <button onclick="checkout()">Checkout</button>
+  </div>
 </div>
 
-
-
 <!-- Checkout -->
+  <div id="checkout">
+    <h2> Enter Credit Card Details </h2>
+    <form action="done.html">
+      <label for="cardName"> Name </label>
+      <input type="text" id="cardName" required>
+      <label for="cardNo"> Card Number </label>
+      <input type="text" id="cardNo" required>
+      <label for="expiryDate" > Expiry Date </label>
+      <input type="date" id="expiryDate" required>
+      <label for="cvv"> CVV </label>
+      <input type="text" id="cvv" required>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
