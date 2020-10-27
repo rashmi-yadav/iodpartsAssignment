@@ -14,7 +14,7 @@
   <header class="header">
     <h1>Shopping Cart</h1>
   </header>
-
+  <div id="mainPage">
   <!-- Shopping Cart -->
   <div class="container">
     <div class="product-header">
@@ -116,8 +116,8 @@
     <form class="form">
       <i class="small material-icons close" onclick="closeWindow('addNewShippingAddress')" >close</i>
     <p>Add Shipping Address:</p>
-      <input type="text" placeholder="Enter Name" id="shippingName" class="name">
-      <textarea placeholder="Address" cols="10" rows="2" id="shippingAddress" class="name" ></textarea>
+      <input type="text" placeholder="Enter Name" id="shippingName" class="name" required>
+      <textarea placeholder="Address" cols="10" rows="2" id="shippingAddress" class="name" required></textarea>
       <input value="Add Address" onclick="addAddress('shipping')" class="submit">
     </form>
   </div>
@@ -131,8 +131,8 @@
     <form class="form">
       <i class="small material-icons close" onclick="closeWindow('addNewBillingAddress')" >close</i>     
     <p>Add Billing Address:</p> 
-      <input type="text" placeholder="Enter Name" id="billingName" class="name">
-      <textarea placeholder="Address" cols="10" rows="2" id="billingAddress" class="name" ></textarea>
+      <input type="text" placeholder="Enter Name" id="billingName" class="name" required>
+      <textarea placeholder="Address" cols="10" rows="2" id="billingAddress" class="name" required></textarea>
       <input value="Add Address" onclick="addAddress('billing')" class="submit">
     </form>
   </div>
@@ -152,7 +152,7 @@
 <!-- Checkout -->
   <div id="checkout">
     <h2> Enter Credit Card Details </h2>
-    <form action="done.html">
+    <form>
       <label for="cardName"> Name </label>
       <input type="text" id="cardName" required>
       <label for="cardNo"> Card Number </label>
@@ -161,10 +161,19 @@
       <input type="date" id="expiryDate" required>
       <label for="cvv"> CVV </label>
       <input type="text" id="cvv" required>
-      <input type="submit" value="Submit">
+      <input type="button" value="Submit" onclick="finalCheckout()">
     </form>
   </div>
-
+</div>
+<div id="finalPage">
+  <div class="card">
+    <h1> Order Successful ! </h1>
+    <p> Thank you for your order </p>
+    You have ordered:
+    <div class="list"> </div>
+    <div class="totalPrice"></div>
+    </div>
+</div>
   <!-- JQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="script.js"></script>

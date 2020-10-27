@@ -264,4 +264,21 @@ function checkout(){
 $('#checkout').show(); 
 
 }
+$('#finalPage').hide();
+function finalCheckout(){
+    $('#mainPage').hide();
+    $('#finalPage').show();
+    var html = "<ul>";
+    for(var i=0;i<products.length;i++){
+        if(products[i].qty>0){
+        html += "<li>";
+        html += `${products[i].qty} ${products[i].name}`;
+        html += "</li>";
+        }
+    }
+    html += "</ul>"
+    $('.list').append(html);
+    html = `<h3>Total Paid - <u>${totalAmt}</u></h3>`;  
+    $('.totalPrice').append(html);
+}
 // alert("working!")
